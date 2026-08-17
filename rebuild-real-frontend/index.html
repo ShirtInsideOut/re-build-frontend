@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#071426" />
+  <title>RE:BUILD — Invention Engine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="grid-bg"></div>
+  <div class="stars"></div>
+
+  <header class="topbar">
+    <button class="brand" id="brandHome" aria-label="Go home">
+      <span class="brand-mark">R</span>
+      <span>RE:BUILD</span>
+    </button>
+    <div class="top-status"><span class="status-dot"></span><span id="modeStatus">CRAFT MODE</span></div>
+  </header>
+
+  <main>
+    <!-- INTRO -->
+    <section class="screen intro-screen active" id="screen-intro">
+      <div class="intro-machine" aria-hidden="true">
+        <div class="machine-shadow"></div>
+        <div class="machine-body">
+          <div class="machine-window"><span></span></div>
+          <div class="machine-slot"></div>
+          <div class="machine-panel"><i></i><i></i><i></i></div>
+        </div>
+        <div class="machine-arm"></div>
+        <div class="machine-light"></div>
+      </div>
+      <div class="intro-copy">
+        <div class="eyebrow">INVENTION ENGINE / ONLINE</div>
+        <h1>OLD STUFF.<br><span>NEW PURPOSE.</span></h1>
+        <p>Tell RE:BUILD what you have. We'll figure out what you can build.</p>
+        <button class="start-button" id="startButton"><span>&gt;</span> START<span class="cursor">_</span></button>
+      </div>
+    </section>
+
+    <!-- MODE -->
+    <section class="screen" id="screen-mode">
+      <div class="page-heading">
+        <div class="eyebrow">INVENTION ENGINE / 01</div>
+        <h2>CHOOSE YOUR<br><span>BUILD MODE.</span></h2>
+        <p>Two ways to turn discarded stuff into something useful.</p>
+      </div>
+      <div class="panel mode-panel">
+        <button class="mode-card selected" data-mode="craft">
+          <span class="pixel-icon craft-icon">✦</span>
+          <span class="card-number">01</span>
+          <strong>CRAFT MODE</strong>
+          <small>Cardboard, bottles, fabric, paper &amp; everyday objects.</small>
+          <span class="card-arrow">→</span>
+        </button>
+        <button class="mode-card" data-mode="tech">
+          <span class="pixel-icon tech-icon">⌁</span>
+          <span class="card-number">02</span>
+          <strong>TECH MODE</strong>
+          <small>Cables, old electronics, LEDs, motors &amp; components.</small>
+          <span class="card-arrow">→</span>
+        </button>
+      </div>
+      <div class="bottom-nav">
+        <button class="ghost-button" data-back="intro">← BACK</button>
+        <button class="primary-button" id="toMaterials">CONTINUE <span>→</span></button>
+      </div>
+    </section>
+
+    <!-- MATERIALS -->
+    <section class="screen" id="screen-materials">
+      <div class="page-heading">
+        <div class="eyebrow">INVENTION ENGINE / 02</div>
+        <h2>WHAT'S IN YOUR<br><span>SCRAP PILE?</span></h2>
+        <p>Select the materials you actually have. No photo upload. No guessing.</p>
+      </div>
+      <div class="panel">
+        <div class="panel-head">
+          <div><span class="step-label">MATERIALS</span><h3>Pick everything you have</h3></div>
+          <span class="selection-count" id="materialCount">0 SELECTED</span>
+        </div>
+        <div class="material-grid" id="materials"></div>
+        <p class="form-error" id="materialError"></p>
+      </div>
+      <div class="bottom-nav">
+        <button class="ghost-button" data-back="mode">← BACK</button>
+        <button class="primary-button" id="toPurpose">CONTINUE <span>→</span></button>
+      </div>
+    </section>
+
+    <!-- PURPOSE -->
+    <section class="screen" id="screen-purpose">
+      <div class="page-heading">
+        <div class="eyebrow">INVENTION ENGINE / 03</div>
+        <h2>WHAT'S THE<br><span>MISSION?</span></h2>
+        <p>Give your invention a job. RE:BUILD will design around it.</p>
+      </div>
+      <div class="panel">
+        <div class="option-grid" id="purposes"></div>
+        <p class="form-error" id="purposeError"></p>
+      </div>
+      <div class="bottom-nav">
+        <button class="ghost-button" data-back="materials">← BACK</button>
+        <button class="primary-button" id="toBudget">CONTINUE <span>→</span></button>
+      </div>
+    </section>
+
+    <!-- BUDGET -->
+    <section class="screen" id="screen-budget">
+      <div class="page-heading">
+        <div class="eyebrow">INVENTION ENGINE / 04</div>
+        <h2>WHAT'S THE<br><span>BUDGET?</span></h2>
+        <p>Keep the invention realistic for what you can spend.</p>
+      </div>
+      <div class="panel">
+        <div class="option-grid" id="budgets"></div>
+        <p class="form-error" id="budgetError"></p>
+      </div>
+      <div class="bottom-nav">
+        <button class="ghost-button" data-back="purpose">← BACK</button>
+        <button class="primary-button" id="toDifficulty">CONTINUE <span>→</span></button>
+      </div>
+    </section>
+
+    <!-- DIFFICULTY -->
+    <section class="screen" id="screen-difficulty">
+      <div class="page-heading">
+        <div class="eyebrow">INVENTION ENGINE / 05</div>
+        <h2>HOW MUCH<br><span>CHAOS?</span></h2>
+        <p>Choose the challenge level that fits you.</p>
+      </div>
+      <div class="panel">
+        <div class="difficulty-grid" id="difficulties"></div>
+        <p class="form-error" id="difficultyError"></p>
+      </div>
+      <div class="bottom-nav">
+        <button class="ghost-button" data-back="budget">← BACK</button>
+        <button class="primary-button" id="toTime">CONTINUE <span>→</span></button>
+      </div>
+    </section>
+
+    <!-- TIME -->
+    <section class="screen" id="screen-time">
+      <div class="page-heading">
+        <div class="eyebrow">INVENTION ENGINE / 06</div>
+        <h2>HOW LONG DO<br><span>YOU HAVE?</span></h2>
+        <p>We'll keep the build inside your time limit.</p>
+      </div>
+      <div class="panel">
+        <div class="option-grid time-grid" id="times"></div>
+        <p class="form-error" id="timeError"></p>
+      </div>
+      <div class="bottom-nav">
+        <button class="ghost-button" data-back="difficulty">← BACK</button>
+        <button class="generate-button" id="generate">⚡ GENERATE INVENTION</button>
+      </div>
+    </section>
+
+    <!-- LOADING -->
+    <section class="screen loading-screen" id="screen-loading">
+      <div class="loader-machine" aria-hidden="true">
+        <div class="loader-ring ring-one"></div>
+        <div class="loader-ring ring-two"></div>
+        <div class="loader-core"></div>
+        <div class="loader-sparks"><i></i><i></i><i></i><i></i></div>
+      </div>
+      <div class="eyebrow">RE:BUILD ENGINE / PROCESSING</div>
+      <h2>BUILDING YOUR<br><span>INVENTION...</span></h2>
+      <p id="loadingText">Sorting possibilities...</p>
+      <div class="progress"><span id="progressBar"></span></div>
+      <p class="generation-error" id="loadingError"></p>
+      <div class="loading-actions">
+        <button class="ghost-button loading-retry" id="loadingRetry">TRY AGAIN</button>
+        <button class="ghost-button loading-back" id="loadingBack">← CHANGE INPUTS</button>
+      </div>
+    </section>
+
+    <!-- TOO DOOF -->
+    <section class="screen doof-screen" id="screen-doof">
+      <div class="doof-visual" aria-hidden="true"><div class="doof-face">!</div><div class="doof-beam"></div></div>
+      <div class="eyebrow">RE:BUILD ENGINE / WARNING</div>
+      <h2>THAT'S TOO<br><span>DOOF.</span></h2>
+      <p id="doofReason">This invention is too complex for RE:BUILD to generate reliably.</p>
+      <div class="doof-box"><span>STATUS</span><strong>BUILD TOO CHAOTIC</strong></div>
+      <button class="primary-button" id="doofBack">↻ CHANGE MY INPUTS</button>
+    </section>
+
+    <!-- RESULT -->
+    <section class="screen" id="screen-result">
+      <div class="result-header">
+        <div>
+          <div class="eyebrow">RE:BUILD ENGINE / OUTPUT</div>
+          <h2 id="resultTitle">YOUR INVENTION</h2>
+          <p id="resultDescription"></p>
+        </div>
+        <div class="build-badge"><span></span> BUILDABLE</div>
+      </div>
+
+      <div class="result-layout">
+        <aside class="panel result-side">
+          <div class="side-title"><span>BUILD DATA</span><b>01</b></div>
+          <div class="data-row"><span>MODE</span><strong id="resultMode">—</strong></div>
+          <div class="data-row"><span>PURPOSE</span><strong id="resultPurpose">—</strong></div>
+          <div class="data-row"><span>BUDGET</span><strong id="resultBudget">—</strong></div>
+          <div class="data-row"><span>TIME</span><strong id="resultTime">—</strong></div>
+          <div class="data-row"><span>DIFFICULTY</span><strong id="resultDifficulty">—</strong></div>
+          <div class="side-divider"></div>
+          <div class="side-title"><span>MATERIALS</span><b id="resultMaterialCount">0</b></div>
+          <ul class="result-list" id="resultMaterials"></ul>
+        </aside>
+
+        <div class="result-main">
+          <div class="panel build-panel">
+            <div class="side-title"><span>ASSEMBLY SEQUENCE</span><b>02</b></div>
+            <ol class="steps-list" id="resultSteps"></ol>
+          </div>
+          <div class="panel split-panel">
+            <div>
+              <div class="side-title"><span>ESTIMATES</span><b>03</b></div>
+              <div class="estimate"><span>COST</span><strong id="resultCost">—</strong></div>
+              <div class="estimate"><span>TIME</span><strong id="resultTime2">—</strong></div>
+            </div>
+            <div>
+              <div class="side-title"><span>SAFETY / TIPS</span><b>04</b></div>
+              <ul class="result-list" id="resultTips"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="result-actions">
+        <button class="ghost-button" id="editInputs">← EDIT INPUTS</button>
+        <button class="primary-button" id="tryAnother">⚡ BUILD ANOTHER</button>
+      </div>
+      <p class="form-error center" id="apiError"></p>
+    </section>
+  </main>
+
+  <footer class="footer"><span>RE:BUILD</span><span>TURN WASTE INTO POSSIBILITY.</span></footer>
+  <script src="script.js"></script>
+</body>
+</html>
