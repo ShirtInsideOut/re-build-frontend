@@ -289,7 +289,8 @@ async function generateInvention() {
     $("progressBar").style.width = "100%";
     const loadingError = $("loadingError");
     if (loadingError) {
-      loadingError.textContent = error.message || "Unknown error.";
+      loadingError.textContent =
+      "Complex inventions may take a little longer. If your invention couldn't be generated, please click TRY AGAIN. ";
       loadingError.classList.add("visible");
     }
     const retry = $("loadingRetry");
@@ -378,8 +379,8 @@ $("loadingBack").addEventListener("click", () => {
 $("doofBack").addEventListener("click", () => showScreen("time"));
 $("editInputs").addEventListener("click", () => showScreen("time"));
 $("tryAnother").addEventListener("click", () => {
-  setError("apiError");
-  showScreen("time");
+  resetAll();
+  showScreen("intro");
 });
 
 document.querySelectorAll("[data-back]").forEach((button) => {

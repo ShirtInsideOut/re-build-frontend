@@ -186,3 +186,11 @@ margin-top: 18px;
 .loading-actions .loading-back { display: none; }
 .loading-actions .loading-retry.visible,
 .loading-actions .loading-back.visible { display: inline-flex; }
+.generation-note {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  margin: 12px 0;
+  text-align: center;
+  font-size: 14px;
+}
